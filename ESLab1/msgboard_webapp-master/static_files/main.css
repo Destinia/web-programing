@@ -1,0 +1,32 @@
+textarea {
+  width: 250px;
+  height: 200px;
+  display: block;
+  font-family: monospace;
+}
+/*nickarea {
+	width:  100px;
+	height: 20px;
+	display: block;
+	font-family: monospace;
+
+}*/
+.request-zone,
+.response-zone,
+#log-area_outer{
+  margin:40px;
+  border:1px solid #ccc;
+}
+#log-area{
+  outline: none;
+  margin: 10px;
+  min-height:200px;
+
+}
+#log-area img{
+  width:20px;
+}
+.nickname-zone {
+  display: inline-block;
+  vertical-align: top;
+}

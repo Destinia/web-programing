@@ -1,0 +1,47 @@
+username: <input type='Text'id='username-input-area'><br>
+password: <input type='Password'  id='password-input-area' maxlength='12'>
+<button id='login-submit-btn'>login</button>
+
+<script language = 'JavaScript'>
+var http_post = function (where, text_to_send, callback) {
+  if (typeof where !== 'string') throw TypeError();
+  if (typeof text_to_send !== 'string') throw TypeError();
+  if (typeof callback !== 'function') throw TypeError();
+  // temp = JSON.parse('{"nickname":"","emoji":6,"message":""}');
+  //console.log(temp["emoji"]);
+  fetch(where, {method: 'POST', body: text_to_send})
+    .then(function (response) {
+      return response.text();
+    })
+    .then(function (server_response_text) {
+      callback(server_response_text);
+    })
+    .catch(function (err) {
+      callback(null, err);
+    });
+};
+
+  var username = document.getElementById('username-input-area');
+  var password = document.getElementById('password-input-area');
+  var login = document.getElementById('login-submit-btn');
+  
+  login.addEventListener('click',function(){
+    var reg_nickname =  /^[a-z0-9]{3,10}$/;
+    var reg_password =  /^[a-z0-9]{5,12}$/;
+    if(!reg_nickname.test(username.value)){alert("username fomat error!!!");return;}
+    if(!reg_password.test(password.value)){alert("password fomat error!!!");return;}
+    var jsonobj = {"username":username.value,"password":password.value};
+    var jsonstr = JSON.stringify(jsonobj);
+
+    http_post('/login',jsonstr,function (result){
+      if(result === "OK") {console.log("it'sOK");close()}
+      else 
+        alert(result);
+    
+    //close();
+    });
+   });
+
+
+
+</script>

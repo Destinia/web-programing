@@ -1,0 +1,4 @@
+1. 從 app.js 裡面的 set_hostname 和 set_port 設定 server 的位置
+2.「accelerometer.js」 「camera.js」 「climate.js」 「rfid.js」裡面都有 post_options 這個 object，可以從當中的 host 和 port 去設定相應 server 的位置
+3. module在tessel 上基本上都是傳感器為 port A； audio 為 port B ，但由於 rfid 比較大，因此 rfid 的 audio 為 port C
+4. server 所收到的 data 存成的檔案，都在「msgboard_webapp-master」這個資料夾當中

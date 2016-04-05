@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Message Board</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/main.css">
+    <script src="/jquery.js"></script>
+  </head>
+  <body>
+
+    <h1>Message Board</h1><button id="user-input-signup-btn">signup</button><button id="user-input-login-btn">login</button>
+    <p>This web app is under construction.&#x1F601</p>
+    <div>
+        <h2>Your nickname:</h2>
+        <textarea id="nickname-input-area" style= "width:100px;height:20px;" autofoucus readonly="readonly"></textarea>
+    </div>
+    <div>
+      <form id = "form_name">
+      Choose your emoji<br>
+      <nobr><input type="radio" name="emoji" value="laugh">  &#x1F60A;</nobr><br>
+      <nobr><input type="radio" name="emoji" value="cry">  &#x1F494;</nobr><br>
+      <nobr><input type="radio" name="emoji" value="angry">  &#x1F440;<br>
+      <nobr><input type="radio" name="emoji" value="amaze">  &#x1F48B;<br>
+      </form>
+    </div>
+
+    <div>
+      <div class="request-zone">
+        <h2>Your request to server:</h2>
+        <textarea id="user-input-area" autofocus></textarea>
+        <button id="user-input-submit-btn">submit</button>
+        <button id="user-input-readall-btn">readall</button>
+        <button id="user-input-cleanup-btn">clean</button>
+      </div>
+
+      <div >
+        <h2>Server response history:</h2>
+      <div id="log-area_outer">
+      <div id="log-area" class="response-zone" contenteditable="true"  hidefocus="true"></div>
+      </div>
+        <form action="" method=POST id="form1" name="form1"> 
+        <select id="nickname_selector" >
+        </select>
+        </form>
+
+      </div>
+      
+    </div>
+
+    <script src="/main.js"></script>
+
+  </body>
+</html>
