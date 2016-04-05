@@ -1,0 +1,90 @@
+class TodoApp extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {items:[],input:'',count:0};
+    this.handleChange = this.handleChange.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+  }
+  updateItems (newItem){
+    var allItems = this.state.items.concat([newItem]);
+    this.setState({items: allItems});
+    this.setState({count:this.state.count+1});
+  }
+  handleChange (e){
+    this.setState({input:e.target.value});
+  }
+  handleAdd (e){
+    if(e.which == 13){
+      e.preventDefault();
+      this.updateItems(this.state.input);
+      this.setState({input:''});
+    }
+  }
+  
+  render() {
+    return (
+      <section className = "todoapp">
+       <TodoBanner handleChange={this.handleChange} handleAdd = {this.handleAdd} input={this.state.input}/>
+       <section className="main">
+         <input className="toggle-all" type="checkbox"/>
+         <label htmlFor="toggle-all">Mark all as complete</label>
+         <TodoList items = {this.state.items} className ="todo-list"/>
+       </section>
+       <footer className="footer">
+         <span className="todo-count">{this.state.count} items left</span>
+         <button className="clear-completed">Clear completed</button>
+       </footer>
+      </section>
+    );
+  }
+}
+
+
+class TodoList extends React.Component {
+  render() {
+    var createItem  = function(itemText){
+      return (
+        <TodoItem>{itemText}</TodoItem>
+      );
+    };
+    return (
+      <ul className="todo-list">{this.props.items.map(createItem)}</ul>
+    );
+  }
+}
+
+class TodoItem extends React.Component {
+  
+  render(){
+    return (
+      <li>
+      <div className = "view"> 
+			<input className = "toggle" type = "checkbox"></input>
+			<label> {this.props.children} </label>
+			<button className = "destroy"></button> 
+			</div>
+      </li>
+     );
+  }
+}
+
+class TodoBanner extends React.Component {
+  render (){
+    return (
+      <header className="header">
+         <h1>todos</h1>
+         <input className="new-todo" placeholder="What needs to be done?" autofocus 
+           value={this.props.input} 
+           onChange={this.props.handleChange.bind(this)} 
+           onKeyPress={this.props.handleAdd.bind(this)}/>
+       </header>
+    );
+  }
+}
+
+class CountDisplay extends React.Component {
+  
+  
+}
+
+ReactDOM.render(<TodoApp />, document.getElementById('root'));

@@ -1,0 +1,140 @@
+// 計算機 App
+class CalcApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      number:0,
+      answer:0,
+      operator:"none",
+      storeop:"none"
+      // TODO
+    };
+  }
+
+  resetState() {
+    this.setState({      
+      number:0,
+      answer:0,
+      operator:"none",
+      storeop:"none"});
+    // TODO
+  }
+
+  showNotImplemented() {
+    console.warn('This function is not implemented yet.');
+  }
+  
+  setNumber(num) {
+    if(this.state.number.toString().length>=9){return;}
+    console.log(this.state.operator);
+    if( this.state.operator !=="none"){
+      if(this.state.operator ==="equal")                                                   {this.setState({number:num,answer:0,operator:"none",storeop:"none"})}
+      else{
+        const cur_num = this.state.number;
+        const cur_op = this.state.operator;
+        this.setState({answer:cur_num,storeop:cur_op,number:num,operator:"none"});
+      }
+    }
+    else{
+      this.setState({number:this.state.number*10 + num});
+    }
+    console.log(this.state.number);
+  }
+  
+  handleOperator(op){
+    
+    if(op==="add"||op==="min"||op==="mul"||op==="div"){
+      this.setState({operator:op});
+      if(this.state.storeop==="add"){
+        this.setState({number:this.state.answer+this.state.number,storeop:""});
+      }
+      else if(this.state.storeop==="min"){
+        this.setState({number:this.state.answer-this.state.number,storeop:""});
+      }
+      else if(this.state.storeop==="mul"){
+        this.setState({number:this.state.answer*this.state.number,storeop:""});
+      }
+      else if(this.state.storeop==="div"){
+        this.setState({number:this.state.answer/this.state.number,storeop:""});
+      }
+    }
+    else if(op==="equal"&&this.state.operator!=="equal"){
+      console.log(this.state.storeop);
+      var output;
+      if(this.state.storeop==="add"){output=this.state.answer+this.state.number;}
+      else if(this.state.storeop==="min"){output=this.state.answer-this.state.number;}
+      else if(this.state.storeop==="mul"){output=this.state.answer*this.state.number;}
+      else if(this.state.storeop==="div"){output=this.state.answer/this.state.number;}
+      this.setState({number:output,operator:"equal"});
+    }
+  }
+  render() {
+    return (
+      <div className="calc-app">
+        <div className="calc-container">
+          <div className="calc-output">
+            <div className="calc-display">{this.state.number.toString().substr(0,8)}</div>
+          </div>
+          <div className="calc-row">
+            <CalcButton op={this.resetState.bind(this)}>AC</CalcButton>
+            <CalcButton op={this.showNotImplemented.bind(this)}>+/-</CalcButton>
+            <CalcButton op={this.showNotImplemented.bind(this)}>%</CalcButton>
+            <CalcButton className="calc-operator" op={this.handleOperator.bind(this,"div")}>÷</CalcButton>
+          </div>
+          <div className="calc-row">
+            <CalcButton className="calc-number" op={this.setNumber.bind(this, 7)}>7</CalcButton>
+            <CalcButton className="calc-number" op={this.setNumber.bind(this, 8)}>8</CalcButton>
+            <CalcButton className="calc-number" op={this.setNumber.bind(this, 9)}>9</CalcButton>
+            <CalcButton className="calc-operator" op={this.handleOperator.bind(this,"mul")}>x</CalcButton>
+          </div>
+          <div className="calc-row">
+            <CalcButton className="calc-number" op={this.setNumber.bind(this, 4)}>4</CalcButton>
+            <CalcButton className="calc-number" op={this.setNumber.bind(this, 5)}>5</CalcButton>
+            <CalcButton className="calc-number" op={this.setNumber.bind(this, 6)}>6</CalcButton>
+            <CalcButton className="calc-operator" op={this.handleOperator.bind(this,"min")}>-</CalcButton>
+          </div>
+          <div className="calc-row">
+            <CalcButton className="calc-number" op={this.setNumber.bind(this, 1)}>1</CalcButton>
+            <CalcButton className="calc-number" op={this.setNumber.bind(this, 2)}>2</CalcButton>
+            <CalcButton className="calc-number" op={this.setNumber.bind(this, 3)}>3</CalcButton>
+            <CalcButton className="calc-operator" op={this.handleOperator.bind(this,"add")}>+</CalcButton>
+          </div>
+          <div className="calc-row">
+            <CalcButton className="calc-number" op={this.setNumber.bind(this, 0)}>0</CalcButton>
+            <CalcButton className="calc-number">.</CalcButton>
+            <CalcButton className="calc-operator" op={this.handleOperator.bind(this,"equal")}>=</CalcButton>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+class CalcButton extends React.Component {
+  render() {
+    const { className, children, onClick } = this.props;
+    
+    return (
+      <div
+        className={(children==0)? 'calc-0':'calc-btn ' + (className ? className : '')}
+        onClick = {    this.props.op  }
+      >
+        {children}
+      </div>
+    );
+  }
+}
+
+CalcButton.propTypes = {
+  className: React.PropTypes.string,
+  children: React.PropTypes.string.isRequired,
+  onClick: React.PropTypes.func
+};
+
+CalcButton.defaultProps = {
+  onClick: () => {}
+};
+
+
+ReactDOM.render(<CalcApp />, document.getElementById('root'));
