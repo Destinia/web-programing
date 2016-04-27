@@ -33,13 +33,13 @@ export default class App extends Component {
                     </form>
                     <ul className="nav navbar-nav">
                       <li>
-                        <a href="#"><i className="glyphicon glyphicon-home"></i> Home</a>
+                        <a href="/"><i className="glyphicon glyphicon-home"></i> Home</a>
                       </li>
                       <li>
-                        <a href="#postModal" role="button" data-toggle="modal"><i className="glyphicon glyphicon-plus"></i> Post</a>
+                        <a role="button" data-toggle="modal"><i className="glyphicon glyphicon-plus"></i> Post</a>
                       </li>
                       <li>
-                        <a href="#"><span className="badge">badge</span></a>
+                        <a ><span className="badge">badge</span></a>
                       </li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
