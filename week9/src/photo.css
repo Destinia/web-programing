@@ -1,0 +1,30 @@
+
+
+.square {
+    float:left;
+    position: relative;
+    width: 30%;
+    padding-bottom : 30%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
+}
+
+.img_1-1{background-image:url('https://scontent-tpe1-1.xx.fbcdn.net/hphotos-xfp1/t31.0-8/12715837_840599699395638_5161751232220447733_o.jpg');}
+.img_1-2{background-image:url('https://scontent-tpe1-1.xx.fbcdn.net/t31.0-8/12357177_1214078368606376_8902604571302293313_o.jpg');}
+.img_1-3{background-image:url('https://scontent-tpe1-1.xx.fbcdn.net/hphotos-xta1/t31.0-8/12194679_963835593684835_4964861072523753237_o.jpg');}
+
+.img_2-1{background-image:url('https://scontent-tpe1-1.xx.fbcdn.net/t31.0-8/12184170_963835990351462_7471211153645104811_o.jpg');}
+.img_2-2{background-image:url('https://scontent-tpe1-1.xx.fbcdn.net/t31.0-8/905528_963835170351544_8961237787065993961_o.jpg');}
+.img_2-3{background-image:url('https://scontent-tpe1-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/12190989_888890311166531_4261319291132613040_n.jpg?oh=99d7c54e0e2483dfe52dd2af06403438&oe=57C00B70');}
+
+.img_3-1{background-image:url('https://scontent-tpe1-1.xx.fbcdn.net/hphotos-xat1/v/t1.0-9/12195752_888890201166542_2053650187811916725_n.jpg?oh=d7120606b3684d8532007637a51440d0&oe=57740900');}
+.img_3-2{background-image:url('https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/11057255_853858394669400_291492680252379176_n.jpg?oh=0e90d20b97db2130c01ad6ca4983e11f&oe=57A5D93E');}
+.img_3-3{background-image:url('https://scontent-tpe1-1.xx.fbcdn.net/t31.0-8/11212143_1099635140050700_7496127182622454458_o.jpg');}
+
+
+
+
+/*  following just for the demo */
+
